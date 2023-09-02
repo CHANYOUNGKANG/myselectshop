@@ -1,4 +1,4 @@
-package com.sparta.myselectshop.Controller;
+package com.sparta.myselectshop.controller;
 
 
 import com.sparta.myselectshop.dto.ProductMypriceRequestDto;
