@@ -37,9 +37,10 @@ public class Product extends Timestamped {
     @Column(nullable = false)
     private int myprice;
 
-    @ManyToOne(fetch = FetchType.LAZY)// 다대일 관계 설정 // 지연로딩// User 객체를 참조하는 필드
-    @JoinColumn(name = "user_id", nullable = false)// 외래키 이름 지정 // null 허용 안함// User 객체를 참조하는 필드
-    private User user;// User 객체를 참조하는 필드
+    // User와 N:1 관계 매핑
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @OneToMany(mappedBy = "product")
     private List<ProductFolder> productFolderList = new ArrayList<>();
@@ -52,12 +53,12 @@ public class Product extends Timestamped {
         this.user = user;
     }
 
+
     public void update(ProductMypriceRequestDto requestDto) {
         this.myprice = requestDto.getMyprice();
     }
 
     public void updateByItemDto(ItemDto itemDto) {
         this.lprice = itemDto.getLprice();
-
     }
 }
